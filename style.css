@@ -1,0 +1,40 @@
+body {
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#main {
+    padding: .5rem 1rem;
+}
+
+.reference {
+    font-style: italic;
+}
+
+.code,
+.media-column,
+.match-column,
+.values-column {
+    font-family: "Courier New", Courier, monospace;
+    color: green;
+}
+
+#query-list tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+.media-column {
+    width: 350px;
+}
+
+.match-column {
+    color: darkblue;
+}
+
+.values-column {
+    color: purple;
+}
+
+.copyright {
+    text-align: center;
+}

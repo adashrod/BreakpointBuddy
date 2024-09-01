@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Media Query Summarizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="queryPrinter.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+    <div id="main">
+        <h1 class="title">Media Query Summary</h1>
+        <p class="documentation">
+            This script tests a series of media queries using 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia">
+                <span class="code">matchMedia()</span></a>,
+            then prints the results in a table. It's a handy way to see which media queries and values match on a
+            device, and since it tests a variety of values for each query on the device, it can show the minimum and
+            maximum values for the query that match, e.g. the exact values that match for
+            <span class="code">(min-width: ...)</span>. For ranges printed in the <span class="reference">Matched
+            Values</span> column, both values are inclusive.
+        </p>
+        <p class="documentation">
+            Note: these media queries are only calculated once on page load. There are no event listeners that
+            automatically recalculate the media queries after events such as resizing the window or changing the zoom
+            level.
+        </p>
+        <p class="documentation">
+            One of the media features tested is <span class="code">@media: (scripting: none)</span>. If this matches,
+            then JavaScript is disabled and the table can't be populated, so you'll never see that particular match in
+            the table.
+        </p>
+        <table id="query-list">
+            <thead>
+                <tr>
+                    <th>Media Query</th>
+                    <th>Matched Value(s)</th>
+                    <th>Values Tested</th>
+                </tr>
+            </thead>
+            <tbody id="query-list-table"></tbody>
+        </table>
+        <div class="copyright">&copy; 2024 Aaron Rodriguez</div>
+    </div>
+</body>
+</html>
