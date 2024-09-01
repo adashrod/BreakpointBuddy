@@ -80,9 +80,7 @@ function floatRange(startIncl, endExcl, increment) {
 function euclideanGcd(a, b) {
     if (a === 0) {
         return b;
-    } else if (b === 0) {
-        return a;
-    } else if (a === b) {
+    } else if (b === 0 || a === b) {
         return a;
     } else if (a > b) {
         return euclideanGcd(b, a - b);
@@ -353,8 +351,7 @@ function testAndPrintMediaQueries() {
             `${q.values[0]} to ${q.values[q.values.length - 1]}` :
             q.values.join(", ");
         const enumeratedMatches = [];
-        for (let i = 0; i < q.values.length; i++) {
-            const currentValue = q.values[i];
+        for (const currentValue of q.values) {
             const mediaQuery = q.query.replace("{value}", currentValue);
             const mql = window.matchMedia(mediaQuery);
             if (mql.matches) {
