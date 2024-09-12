@@ -137,8 +137,7 @@ function generateSomeFractions() {
 
 const someSortedFractions = generateSomeFractions();
 
-const allQueries = [
-{
+const allQueries = [{
     query: "(any-hover: {value})",
     expressValuesAsRange: false,
     values: ["none", "hover"]
