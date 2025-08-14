@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
     <head>
-        <title>Media Query Summarizer</title>
+        <title>Breakpoint Buddy - Media Query Explorer for Responsive Design</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
+        <meta name="description" content="Breakpoint Buddy is a Media Query Explorer that lets you test and view CSS breakpoints in real time for any device or screen size.">
         <script src="queryPrinter.js"></script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "Breakpoint Buddy",
+                "description": "A Media Query Explorer that lets you test and view CSS breakpoints in real time for any device or screen size.",
+                "applicationCategory": "Developer Tools"
+            }
+        </script>
         <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
 <body>
     <div id="main">
-        <h1 class="title">Media Query Summarizer</h1>
+        <h1 class="title">Media Query Explorer & Responsive Design Helper</h1>
+        <p class="documentation">
+            Welcome to Breakpoint Buddy, a fast and easy Media Query Explorer that helps you test responsive breakpoints and CSS media queries right in your browser.
+        </p>
         <p class="documentation">
             This script tests a series of media queries on your device using 
             <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia">
@@ -21,9 +34,8 @@
             Values</span> column, both values are inclusive.
         </p>
         <p class="documentation">
-            Note: these media queries are only calculated once on page load. There are no event listeners that
-            automatically recalculate the media queries after events such as resizing the window or changing the zoom
-            level.
+            Note: Media queries are tested every second. If you resize the window or change the zoom level, the media
+            queries will be recalculated.
         </p>
         <p class="documentation">
             One of the media features tested is <span class="code">@media (scripting: none)</span>. If this matches,
@@ -40,7 +52,7 @@
             </thead>
             <tbody id="query-list-table"></tbody>
         </table>
-        <div class="copyright">&copy; 2024 Aaron Rodriguez</div>
+        <div class="copyright">&copy; 2025 Aaron Rodriguez</div>
     </div>
 </body>
 </html>

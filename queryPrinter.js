@@ -343,7 +343,9 @@ function generateHtmlTableRow(mediaQuery, matchValue, allValues) {
  * Evaluates all of the media queries and prints the ones that match with their matching values to a table
  */
 function testAndPrintMediaQueries() {
+    const start = performance.now();
     const tableBodyElement = document.getElementById("query-list-table");
+    tableBodyElement.innerHTML = "";
     for (const q of allQueries) {
         let firstMatch, lastMatch, anyMatch = false;
         const allValues = q.expressValuesAsRange ?
@@ -372,6 +374,9 @@ function testAndPrintMediaQueries() {
             }
         }
     }
+    const end = performance.now();
+    console.log(`Time taken: ${end - start} milliseconds`);
+    setTimeout(testAndPrintMediaQueries, 1000);
 }
 
 window.onload = testAndPrintMediaQueries;
