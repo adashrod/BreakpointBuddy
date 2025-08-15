@@ -90,34 +90,33 @@ function euclideanGcd(a, b) {
 }
 
 /**
- * @param {*} fraction e.g. "7/8", "6/3"
- * @returns [numerator, denominator]
- */
-function parseFraction(fraction) {
-    return fraction.split("/").map(n => parseInt(n, 10));
-}
-
-/**
- * @param {string} fraction string representation of a fraction such as "1/2" or "5/4"
+ * @param {[number, number]} [numerator, denominator] representation of a fraction such as [1, 2] or [5, 4]
  * @returns true if the fraction cannot be reduced;
  */
-function isIrreducible(fraction) {
-    const [numerator, denominator] = parseFraction(fraction);
+function isIrreducible([numerator, denominator]) {
     const gcd = euclideanGcd(numerator, denominator);
     return gcd === 1;
 }
 
 /**
  * @param {number} max max int to use in numerator and denominator
- * @returns an array of fractions (strings) from `1/${max}` to `${max/max}` and `${max/1} to `${max/max}`
+ * @returns an array of fractions (arrays) from [1, max] to [max, max] and [max, 1] to [max, max]
  */
 function generateFractionRange(max) {
     const result = [];
     for (let i = 1; i <= max; i++) {
-        result.push(`${i}/${max}`);
-        result.push(`${max}/${i}`);
+        result.push([i, max]);
+        result.push([max, i]);
     }
     return result;
+}
+
+/**
+ * @param {[number, number]} [numerator, denominator] representation of a fraction such as [1, 2] or [5, 4]
+ * @returns string representation of a fraction such as "1/2" or "5/4"
+ */
+function fractionToString([num, den]) {
+    return `${num}/${den}`;
 }
 
 /**
@@ -128,11 +127,12 @@ function generateSomeFractions() {
         .map(generateFractionRange)
         .flat()
         .sort((a, b) => {
-            const [numA, denA] = parseFraction(a);
-            const [numB, denB] = parseFraction(b);
+            const [numA, denA] = a;
+            const [numB, denB] = b;
             return (numA / denA) - (numB / denB);
         })
-        .filter(isIrreducible);
+        .filter(isIrreducible)
+        .map(fractionToString);
 }
 
 const someSortedFractions = generateSomeFractions();
