@@ -35,7 +35,6 @@ function intPower(base, exponent) {
 }
 
 /**
- * 
  * @returns array of powers of base: [base ^ minExponentIncl, base ^ maxExponentExcl), with exponent in integer increments
  */
 function powerRange(base, minExponentIncl, maxExponentExcl) {
@@ -138,15 +137,45 @@ function generateSomeFractions() {
 const someSortedFractions = generateSomeFractions();
 
 const allQueries = [{
+    query: "(hover: {value})",
+    expressValuesAsRange: false,
+    values: ["none", "hover"],
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover"
+}, {
     query: "(any-hover: {value})",
     expressValuesAsRange: false,
     values: ["none", "hover"],
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/any-hover"
 }, {
+    query: "(pointer: {value})",
+    expressValuesAsRange: false,
+    values: ["none", "coarse", "fine"],
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer"
+}, {
     query: "(any-pointer: {value})",
     expressValuesAsRange: false,
     values: ["none", "coarse", "fine"],
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/any-pointer"
+}, {
+    query: "(aspect-ratio > {value})",
+    expressValuesAsRange: true,
+    values: someSortedFractions,
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/aspect-ratio"
+}, {
+    query: "(aspect-ratio < {value})",
+    expressValuesAsRange: true,
+    values: someSortedFractions,
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/aspect-ratio"
+}, {
+    query: "(aspect-ratio >= {value})",
+    expressValuesAsRange: true,
+    values: someSortedFractions,
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/aspect-ratio"
+}, {
+    query: "(aspect-ratio <= {value})",
+    expressValuesAsRange: true,
+    values: someSortedFractions,
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/aspect-ratio"
 }, {
     query: "(min-aspect-ratio: {value})",
     expressValuesAsRange: true,
@@ -157,6 +186,26 @@ const allQueries = [{
     expressValuesAsRange: true,
     values: someSortedFractions,
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/aspect-ratio"
+}, {
+    query: "(color > {value})",
+    expressValuesAsRange: true,
+    values: intRange(1, 33),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color"
+}, {
+    query: "(color < {value})",
+    expressValuesAsRange: true,
+    values: intRange(1, 33),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color"
+}, {
+    query: "(color >= {value})",
+    expressValuesAsRange: true,
+    values: intRange(1, 33),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color"
+}, {
+    query: "(color <= {value})",
+    expressValuesAsRange: true,
+    values: intRange(1, 33),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color"
 }, {
     query: "(min-color: {value})",
     expressValuesAsRange: true,
@@ -172,6 +221,26 @@ const allQueries = [{
     expressValuesAsRange: false,
     values: ["srgb", "p3", "rec2020"],
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-gamut"
+}, {
+    query: "(color-index > {value})",
+    expressValuesAsRange: false,
+    values: powerRange(2, 0, 25),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-index"
+}, {
+    query: "(color-index < {value})",
+    expressValuesAsRange: false,
+    values: powerRange(2, 0, 25),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-index"
+}, {
+    query: "(color-index >= {value})",
+    expressValuesAsRange: false,
+    values: powerRange(2, 0, 25),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-index"
+}, {
+    query: "(color-index <= {value})",
+    expressValuesAsRange: false,
+    values: powerRange(2, 0, 25),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-index"
 }, {
     query: "(min-color-index: {value})",
     expressValuesAsRange: false,
@@ -203,6 +272,46 @@ const allQueries = [{
     values: ["0", "1"],
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/grid"
 }, {
+    query: "(height > {value}px)",
+    expressValuesAsRange: true,
+    values: intRange(1, 5001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
+}, {
+    query: "(height < {value}px)",
+    expressValuesAsRange: true,
+    values: intRange(1, 5001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
+}, {
+    query: "(height >= {value}px)",
+    expressValuesAsRange: true,
+    values: intRange(1, 5001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
+}, {
+    query: "(height <= {value}px)",
+    expressValuesAsRange: true,
+    values: intRange(1, 5001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
+}, {
+    query: "(height > {value}rem)",
+    expressValuesAsRange: true,
+    values: intRange(1, 321),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
+}, {
+    query: "(height < {value}rem)",
+    expressValuesAsRange: true,
+    values: intRange(1, 321),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
+}, {
+    query: "(height >= {value}rem)",
+    expressValuesAsRange: true,
+    values: intRange(1, 321),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
+}, {
+    query: "(height <= {value}rem)",
+    expressValuesAsRange: true,
+    values: intRange(1, 321),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
+}, {
     query: "(min-height: {value}px)",
     expressValuesAsRange: true,
     values: intRange(1, 5001),
@@ -222,11 +331,6 @@ const allQueries = [{
     expressValuesAsRange: true,
     values: intRange(1, 321),
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/height"
-}, {
-    query: "(hover: {value})",
-    expressValuesAsRange: false,
-    values: ["none", "hover"],
-    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover"
 }, {
     query: "(inverted-colors: {value})",
     expressValuesAsRange: false,
@@ -253,11 +357,6 @@ const allQueries = [{
     values: ["none", "scroll"],
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/overflow-inline"
 }, {
-    query: "(pointer: {value})",
-    expressValuesAsRange: false,
-    values: ["none", "coarse", "fine"],
-    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer"
-}, {
     query: "(prefers-color-scheme: {value})",
     expressValuesAsRange: false,
     values: ["light", "dark"],
@@ -282,6 +381,86 @@ const allQueries = [{
     expressValuesAsRange: false,
     values: ["no-preference", "reduce"],
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-transparency"
+}, {
+    query: "(resolution > {value}x)",
+    expressValuesAsRange: true,
+    values: floatRange(0, 10, .01),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution < {value}x)",
+    expressValuesAsRange: true,
+    values: floatRange(0, 10, .01),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution >= {value}x)",
+    expressValuesAsRange: true,
+    values: floatRange(0, 10, .01),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution <= {value}x)",
+    expressValuesAsRange: true,
+    values: floatRange(0, 10, .01),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution > {value}dppx)",
+    expressValuesAsRange: true,
+    values: floatRange(0, 10, .01),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution < {value}dppx)",
+    expressValuesAsRange: true,
+    values: floatRange(0, 10, .01),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution >= {value}dppx)",
+    expressValuesAsRange: true,
+    values: floatRange(0, 10, .01),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution <= {value}dppx)",
+    expressValuesAsRange: true,
+    values: floatRange(0, 10, .01),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution > {value}dpcm)",
+    expressValuesAsRange: true,
+    values: intRange(1, 1001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution < {value}dpcm)",
+    expressValuesAsRange: true,
+    values: intRange(1, 1001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution >= {value}dpcm)",
+    expressValuesAsRange: true,
+    values: intRange(1, 1001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution <= {value}dpcm)",
+    expressValuesAsRange: true,
+    values: intRange(1, 1001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution > {value}dpi)",
+    expressValuesAsRange: true,
+    values: intRange(1, 2501),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution < {value}dpi)",
+    expressValuesAsRange: true,
+    values: intRange(1, 2501),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution >= {value}dpi)",
+    expressValuesAsRange: true,
+    values: intRange(1, 2501),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
+}, {
+    query: "(resolution <= {value}dpi)",
+    expressValuesAsRange: true,
+    values: intRange(1, 2501),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution"
 }, {
     query: "(min-resolution: {value}x)",
     expressValuesAsRange: true,
@@ -343,6 +522,46 @@ const allQueries = [{
     values: ["standard", "high"],
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/video-dynamic-range"
 }, {
+    query: "(width > {value}px)",
+    expressValuesAsRange: true,
+    values: intRange(1, 5001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
+}, {
+    query: "(width < {value}px)",
+    expressValuesAsRange: true,
+    values: intRange(1, 5001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
+}, {
+    query: "(width >= {value}px)",
+    expressValuesAsRange: true,
+    values: intRange(1, 5001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
+}, {
+    query: "(width <= {value}px)",
+    expressValuesAsRange: true,
+    values: intRange(1, 5001),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
+}, {
+    query: "(width > {value}rem)",
+    expressValuesAsRange: true,
+    values: intRange(1, 321),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
+}, {
+    query: "(width < {value}rem)",
+    expressValuesAsRange: true,
+    values: intRange(1, 321),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
+}, {
+    query: "(width >= {value}rem)",
+    expressValuesAsRange: true,
+    values: intRange(1, 321),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
+}, {
+    query: "(width <= {value}rem)",
+    expressValuesAsRange: true,
+    values: intRange(1, 321),
+    url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
+}, {
     query: "(min-width: {value}px)",
     expressValuesAsRange: true,
     values: intRange(1, 5001),
@@ -359,7 +578,7 @@ const allQueries = [{
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
 }, {
     query: "(max-width: {value}rem)",
-    expressValuesAsRange: true,    
+    expressValuesAsRange: true,
     values: intRange(1, 321),
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width"
 }];
